@@ -1,4 +1,4 @@
 interface:
   display_name: "Notetaker"
-  short_description: "Write durable session notes"
-  default_prompt: "Use $notetaker to write down what we discussed, decided, did, why it matters, and what should happen next."
+  short_description: "Maintain durable project memory"
+  default_prompt: "Use $notetaker to update the right project docs with what changed, why it matters, verification, and next steps."
