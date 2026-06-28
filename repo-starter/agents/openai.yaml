@@ -1,0 +1,4 @@
+interface:
+  display_name: "Repo Starter"
+  short_description: "Baseline new repos before first publish"
+  default_prompt: "Use $repo-starter to initialize or audit a new repository with privacy, Git, ignore, documentation, and GitDCY defaults before the first commit or push."
