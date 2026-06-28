@@ -1,4 +1,4 @@
 interface:
   display_name: "Safe Yeet"
   short_description: "Default safe publish workflow"
-  default_prompt: "Use $safe-yeet as the default commit and push flow, with privacy, secret, and genericity checks before publishing."
+  default_prompt: "Use $safe-yeet as the default commit and push flow, with public-repo privacy, secret, and genericity checks before publishing."

@@ -20,9 +20,11 @@ Use this standalone skill as the default publish flow. It does not require the G
    - Determine whether the target repo is public or private when possible.
    - Use `gh` or a GitHub connector when available; if not, continue with local `git` and assume public-level scrutiny unless the user explicitly confirms the repo is private.
    - Apply stricter scrutiny to public repos, but still check private repos for secrets and avoid unnecessary personal detail.
+   - For public repos, treat `AGENTS.md`, private notes, and private operating instructions as non-public by default. Do not commit them unless the user explicitly says that this specific repo is private or that the file is intentionally public-safe.
 
 3. Run the privacy and genericity gate before commit.
    - Search the staged candidate diff for secrets, keys, tokens, private hostnames, private IPs, local-only paths, personal names, raw transcripts, private account data, and exact user stories.
+   - Inspect staged paths as well as content. In public repos, block `AGENTS.md`, `.env*` except `.env.example`, private/runtime directories such as `private/`, `docs/private/`, `.codex/`, `.claude/`, `state/`, `data/`, `uploads/`, `logs/`, and local-only config unless there is explicit confirmation that the path is meant to be public source.
    - Replace private examples with generic product requirements, roles, placeholders, or supported workflow categories.
    - Replace machine-specific paths with placeholders such as `<state-root>`, `<runtime-root>`, `<repo-root>`, or documented env vars.
    - Keep implementation behavior general unless a user-specific customization is intentionally scoped to private configuration, ignored state, or an account profile.
