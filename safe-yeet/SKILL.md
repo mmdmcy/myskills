@@ -1,11 +1,11 @@
 ---
 name: safe-yeet
-description: Publish local git changes with an extra privacy, secret, and genericity gate before commit and push. Use when the user asks to commit, push, publish, yeet, sync to GitHub, or ship local changes while avoiding leaked secrets, personal data, machine-specific details, private examples, or code/docs that are overfitted to one user instead of generalized product behavior.
+description: Default safe publish workflow for local git changes. Use when the user asks to commit, push, publish, yeet, sync to GitHub, ship local changes, or publish multiple repos, especially when avoiding leaked secrets, personal data, machine-specific details, private examples, or code/docs overfitted to one user instead of generalized product behavior.
 ---
 
 # Safe Yeet
 
-Use this skill for publish flows where correctness includes not leaking private context.
+Use this standalone skill as the default publish flow. It does not require the GitHub plugin. Use the GitHub plugin only as an optional enhancement for pull requests, review comments, connector-backed repository data, or CI log workflows.
 
 ## Workflow
 
@@ -16,8 +16,9 @@ Use this skill for publish flows where correctness includes not leaking private 
    - Do not stage generated/runtime artifacts unless the user explicitly asked for them and they are safe source artifacts.
 
 2. Check remote and visibility.
-   - Confirm the remote is GitHub-backed before pushing.
-   - Determine whether the target repo is public or private.
+   - Confirm the repo has a push remote before pushing.
+   - Determine whether the target repo is public or private when possible.
+   - Use `gh` or a GitHub connector when available; if not, continue with local `git` and assume public-level scrutiny unless the user explicitly confirms the repo is private.
    - Apply stricter scrutiny to public repos, but still check private repos for secrets and avoid unnecessary personal detail.
 
 3. Run the privacy and genericity gate before commit.
@@ -29,7 +30,8 @@ Use this skill for publish flows where correctness includes not leaking private 
 
 4. Run checks before committing.
    - Run `git diff --check`.
-   - Run `gitleaks protect --staged --redact --verbose --log-level warn` after staging.
+   - Run `gitleaks protect --staged --redact --verbose --log-level warn` after staging when `gitleaks` is installed.
+   - If `gitleaks` is unavailable, run targeted text scans for common secret markers and report that deterministic secret scanning was unavailable.
    - Run relevant repo tests or lightweight verification from local docs.
    - For docs-only changes, run available doc/contract checks when present.
    - If full-history secret scans report old findings, distinguish historical leaks from the current staged diff and do not claim history is clean.
@@ -41,7 +43,7 @@ Use this skill for publish flows where correctness includes not leaking private 
 
 6. Push.
    - Push the current branch to its tracked remote unless the user requested a branch or PR workflow.
-   - If on a feature branch and the user wants a PR, push the branch and open a draft PR.
+   - If on a feature branch and the user wants a PR, push the branch and open a draft PR using `gh` or the GitHub plugin if available.
    - If pushing `main` triggers deploys, check the workflow result when practical.
 
 7. Report clearly.
