@@ -1,0 +1,4 @@
+interface:
+  display_name: "Safe Yeet"
+  short_description: "Publish changes with privacy checks"
+  default_prompt: "Use $safe-yeet to commit and push these changes only after checking for secrets, personal data, and over-specific implementation details."
