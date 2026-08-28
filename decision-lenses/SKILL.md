@@ -1,11 +1,11 @@
 ---
-name: agent-council
-description: Review a medium- or high-impact decision through a built-in panel of specialist perspectives and produce one practical recommendation.
+name: decision-lenses
+description: Review a medium- or high-impact decision through multiple specialist perspectives and produce one practical recommendation.
 ---
 
-# Agent Council
+# Decision Lenses
 
-Use this skill for a medium- or high-impact decision. The user should only need to ask for a council review.
+Use this skill for a medium- or high-impact decision. The user should only need to ask for a decision review.
 
 By default, read and apply all four core jobs:
 

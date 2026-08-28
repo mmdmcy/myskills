@@ -1,4 +1,0 @@
-interface:
-  display_name: "Agent Council"
-  short_description: "Review a decision through the council"
-  default_prompt: "Review this decision through the council's core perspectives, add any perspective it clearly needs, and synthesize one practical recommendation."

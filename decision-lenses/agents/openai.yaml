@@ -1,0 +1,4 @@
+interface:
+  display_name: "Decision Lenses"
+  short_description: "Review a decision through multiple perspectives"
+  default_prompt: "Review this decision through the core perspectives, add any perspective it clearly needs, and synthesize one practical recommendation."
