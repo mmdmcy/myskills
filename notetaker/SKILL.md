@@ -1,6 +1,6 @@
 ---
 name: notetaker
-description: Write and maintain durable project memory for repos and apps. Use when the user asks to write things down, preserve what was discussed, summarize decisions, record what was done, explain why choices were made, update future-Codex context, maintain handoff notes, product vision, architecture notes, source/research notes, roadmap memory, readiness notes, or session continuity docs.
+description: Write and maintain durable project memory for repos and apps. Use when the user asks to write things down, preserve what was discussed, summarize decisions, record what was done, explain why choices were made, update the context future agent sessions (Codex, Claude Code) start from, maintain handoff notes, product vision, architecture notes, source/research notes, roadmap memory, readiness notes, or session continuity docs.
 ---
 
 # Notetaker
@@ -31,7 +31,7 @@ Use this skill to preserve project continuity without turning chat into a transc
    - Generalize private examples into requirements, product categories, roles, constraints, or operating principles.
    - Use an ignored private notes convention only when it already exists or the user explicitly asks for it.
 
-5. Write for the next Codex session.
+5. Write for the next agent session (Codex, Claude Code).
    - Be concise, factual, dated where useful, and editable.
    - Prefer bullets, file references, commands, and decision rationale over narrative.
    - Record why decisions were made so future sessions do not reverse them by accident.
