@@ -15,6 +15,7 @@ a contents list past 100 lines, every relative link resolves, every page under
 docs/ is linked from somewhere. A `docs-check.toml` in the root may set:
 
     index = "docs/handbook.md"          # 200 lines
+    roots = ["agents/AGENTS.md"]         # also loaded every session: 150 lines
     open_list = "../fleet/OPEN.md"       # 110 lines; only open list
     skip = ["docs/archive/", "docs/decisions/", "docs/reports/"]
     no_limit = ["docs/changelog.md"]
@@ -56,7 +57,7 @@ def markdown_files(root, skip):
 def kind_of(rel, config):
     if rel == config.get("index"):
         return "index"
-    if rel in ("AGENTS.md", "CLAUDE.md"):
+    if rel in ("AGENTS.md", "CLAUDE.md") or rel in config.get("roots", []):
         return "root"
     if rel.endswith("/AGENTS.md") or rel.endswith("/CLAUDE.md"):
         return "package"
