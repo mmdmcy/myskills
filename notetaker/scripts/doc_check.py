@@ -21,6 +21,7 @@ docs/ is linked from somewhere. A `docs-check.toml` in the root may set:
     [[covers]]                           # every name the command prints
     file = "docs/commands.md"            # (one per line) appears in file
     command = "mytool list-commands"
+    before = "(?:`|mytool )"             # optional: what must precede it
 """
 
 import argparse
@@ -156,8 +157,11 @@ def check(root, config, fix=False, fixed=None):
             found.append((cover["file"], f"could not list what it must cover ({cover['command']}): {error}"))
             continue
         text = doc.read_text(errors="replace") if doc.exists() else ""
+        # `before`: a regex that must come right before the name, such as
+        # "(?:`|lmice )" for a command named as code or after its tool.
+        before = cover.get("before", r"(?<![\w-])")
         for name in names:
-            if not re.search(r"(?<![\w-])" + re.escape(name) + r"(?![\w-])", text):
+            if not re.search(before + re.escape(name) + r"(?![\w-])", text):
                 found.append((cover["file"], f"does not mention {name} ({cover['command']} lists it)"))
     return found
 
