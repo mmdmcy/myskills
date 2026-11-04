@@ -144,7 +144,9 @@ def check(root, config, fix=False, fixed=None):
         if rel.startswith("docs/") and kind_of(rel, config) == "page" and rel not in linked:
             found.append((rel, "no other doc links to it: add its line to the index or doc map"))
     open_list = config.get("open_list")
-    if open_list:
+    # Its size is checked only by the repository that holds it: one list, one
+    # check (2026-11-04: one long list failed three repositories' tests).
+    if open_list and (root / open_list).resolve().is_relative_to(root.resolve()):
         path = (root / open_list).resolve()
         if path.exists():
             count = len(path.read_text(errors="replace").splitlines())
