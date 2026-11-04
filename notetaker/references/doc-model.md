@@ -17,7 +17,7 @@ https://code.claude.com/docs/en/large-codebases).
 | Package `AGENTS.md` (`services/x/`, `apps/y/`) | that package's commands, gotchas and boundaries | 60 lines | when a file in that folder is read |
 | Handbook / index | one line per device, service, project or topic, each linking to its page | 200 lines | before touching what it lists |
 | Topic pages (`docs/<area>/<topic>.md`) | how one thing works and why; a contents list on top past 100 lines | 400 lines | when working on that topic |
-| Open list (one per owner, not per repo) | what was asked and promised, not done yet: date, what, the owner's words, why not yet | 100 lines | every session (imported, see below) |
+| Open list (one per owner, not per repo) | what was asked and promised, not done yet: date, what, the owner's words, why not yet | 110 lines | every session (imported, see below) |
 | `docs/handoff.md` | current state only: where things stand, what is in flight, how to verify | 150 lines; rewritten, older copies moved aside | when resuming |
 | Changelog | one line per change, newest last | none; read the last lines only | after a change, to add a line |
 | Decision records (`docs/decisions/NNNN-*.md`) | one decision each: context, decision, consequences; never rewritten, superseded by a newer one | one decision | when working in that area |
