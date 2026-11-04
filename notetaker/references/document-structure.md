@@ -103,12 +103,12 @@ This file is the editable working handoff for future sessions.
 
 ```
 
-## Known Loose Ends
+## Open Work
 
-- TBD
+Open items live in the owner's one open list (named in the global agent instructions), not here.
 ````
 
-Keep handoff docs practical. Include what changed, why, how it was verified, what remains risky, and what the next session should do first.
+Keep handoff docs practical: current state, what changed, why, how it was verified and what remains risky, in at most 150 lines. Loose ends and next steps go to the open list (`references/doc-model.md`).
 
 ## Source Notes
 

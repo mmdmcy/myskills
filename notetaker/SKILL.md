@@ -17,12 +17,14 @@ Use this skill to preserve project continuity without turning chat into a transc
 2. Route the memory to the right durable document.
    - Product direction, positioning, audience, principles, and roadmap: update or create `docs/product-vision.md` or the existing vision doc.
    - Runtime boundaries, data model, cost/privacy/security contracts, interfaces, and extension points: update or create `docs/architecture.md`.
-   - What happened this session, what changed, why, verification, loose ends, and next steps: update or create `docs/handoff.md`.
+   - Current state, what changed and why, and how to verify: update or create `docs/handoff.md` (current state only; rewrite it, move older copies aside).
+   - Loose ends, next steps and promises: the owner's one open list (named in the global agent instructions), never the handoff; an item leaves only when done and checked.
    - Internet-backed legal, tax, regulatory, pricing, vendor, or current-source claims: update or create a dated source note such as `docs/source-notes/YYYY-MM-DD-topic.md`.
    - Launch, legal, store, payment, privacy, or policy audit state: update the existing readiness doc; create one only if the repo already uses readiness docs or the user asks for launch readiness.
    - Small repos with no docs folder: update the README first unless durable context would clearly outgrow it.
 
 3. Use standard structure when creating a missing doc.
+   - Read `references/doc-model.md` for the layers (root and package instructions, index, topic pages, open list, handoff, changelog, decisions), their size limits and the rules that keep them working, before creating a doc or when one has grown past its limit.
    - Read `references/document-structure.md` before creating or heavily reshaping product vision, architecture, handoff, or source-note files.
    - Keep repo-specific headings if they already exist and are clear.
 
@@ -39,6 +41,8 @@ Use this skill to preserve project continuity without turning chat into a transc
 
 6. Verify before finishing.
    - Run `git diff --check`.
+   - Check each changed doc against its size limit in `references/doc-model.md`; past it, split by topic.
+   - After a substantial change, run the reader test (`references/doc-model.md`): a fresh agent with only the doc answers the next agent's questions; every miss is a doc fix.
    - Run any repo-specific doc, contract, or validation check that already exists.
    - If sensitive topics were discussed, scan the diff for secrets and private examples.
    - Do not commit or push unless the user asks.
