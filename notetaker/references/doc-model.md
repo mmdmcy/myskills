@@ -24,6 +24,11 @@ https://code.claude.com/docs/en/large-codebases).
 
 ## Rules that keep it working
 
+- **A check, not a habit.** `scripts/doc_check.py` runs in the repository's
+  tests: size limits, links that resolve, every page reachable from an index
+  or doc map, contents lists past 100 lines, one open list, and (`[[covers]]`)
+  every name a command lists appears in its doc. Docs that drift fail a test
+  like code does; an agent fixes what the finding names instead of rewriting.
 - **One home per fact.** A rule, a list or a state lives in one file; others
   link to it. Two copies drift, and an agent believes the stale one.
 - **Open work has one list.** Loose ends, next steps and promises go to the

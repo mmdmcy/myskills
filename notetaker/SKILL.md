@@ -41,7 +41,7 @@ Use this skill to preserve project continuity without turning chat into a transc
 
 6. Verify before finishing.
    - Run `git diff --check`.
-   - Check each changed doc against its size limit in `references/doc-model.md`; past it, split by topic.
+   - Run `scripts/doc_check.py` in the repository (it reads an optional `docs-check.toml`; `--fix` adds contents lists) and fix every finding; if the repository's tests do not run it yet, add it there, so drift fails a test instead of waiting for an agent to notice.
    - After a substantial change, run the reader test (`references/doc-model.md`): a fresh agent with only the doc answers the next agent's questions; every miss is a doc fix.
    - Run any repo-specific doc, contract, or validation check that already exists.
    - If sensitive topics were discussed, scan the diff for secrets and private examples.
