@@ -29,6 +29,35 @@ https://code.claude.com/docs/en/large-codebases).
   or doc map, contents lists past 100 lines, one open list, and (`[[covers]]`)
   every name a command lists appears in its doc. Docs that drift fail a test
   like code does; an agent fixes what the finding names instead of rewriting.
+  A repository that wants the structure enforced sets more keys in its
+  `docs-check.toml`, each a rule only when set (the script's docstring shows
+  the syntax; the tests, `python3 -I -m unittest discover -s notetaker/scripts/tests`):
+  - `reach = ["."]`, `patterns = true`: every page in the whole repository is
+    linked from somewhere; a doc-map line such as `apps/<app>/README.md` or
+    `docs/x-*.md` counts as a link to every file it matches.
+  - `state = [folders or globs]`, `state_grace_days = 7`: a state page has
+    `State as of: YYYY-MM-DD` (valid, not in the future, not more than the
+    grace behind its last commit) and `Owner:` in its first 10 lines, and no
+    `##` heading with a date (that is a report).
+  - `decisions = "docs/decisions/"`: records named `NNNN-slug.md`, numbered
+    without gaps or doubles, with `Date:`, `Status:` and `Decider:`;
+    `Superseded by NNNN` names a record that exists; `README.md` links every
+    record; `TEMPLATE.md` is skipped.
+  - `frozen = [folders or globs]`, `frozen_grace_days = 7`, `frozen_ok =
+    [paths]`: a dated file is named `YYYY-MM-DD-slug.md` and its last commit
+    is at most the grace after that date, unless listed in `frozen_ok`.
+  - `changelog = "docs/changelog.md"`: when the last commit (or, with
+    `--staged`, the staged set: a pre-commit hook) touches a state, decision,
+    frozen or reference file, the changelog is touched too; a changelog line
+    with "decid" names `ADR NNNN` or a path under the decisions folder.
+  - `[[only_in]]` with `pattern` (a regex) and `files`: the pattern may
+    appear only in those files, the frozen, decisions and archive folders and
+    the changelog; every other `.md` that matches is a finding (one home per
+    fact). Code is not scanned.
+  - `reference = "docs/reference/"`: each page has `Checked on: YYYY-MM-DD`
+    and at least one `Re-check:` line; `every N days|weeks|months` past due is
+    a notice (exit 4, listed in text and JSON), `when <trigger>` is listed and
+    never flagged; `README.md` links every page.
 - **One home per fact.** A rule, a list or a state lives in one file; others
   link to it. Two copies drift, and an agent believes the stale one.
 - **Open work has one list.** Loose ends, next steps and promises go to the
