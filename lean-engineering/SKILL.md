@@ -84,6 +84,9 @@ more general, and say why in one sentence.
   side? Extend it, or make its output say more; never build a second part
   that compares the same things the other way round (2026-11-03: a
   receiver's checklist rebuilt what the receipt already judged).
+- Write the answer down before building or briefing anyone: "extends X"
+  or "searched for Y, nothing exists". The same before calling a finding
+  new: check what the system already records.
 - Is the request the best route to what the person wants? If a cheaper,
   safer or already-decided route exists, say so first, with a
   recommendation.
