@@ -31,7 +31,9 @@ more general, and say why in one sentence.
    in-house; use the operating system's own tools when they are proven;
    take libraries only for foundations and cryptography. No background
    process that does not earn its memory. Measure (RAM, CPU, disk, power,
-   latency) instead of guessing, and write the numbers down.
+   latency) instead of guessing, and write the numbers down. Contact an
+   outside service only when a local fact says something changed (a new
+   commit, a new file), never on a short fixed timer; keep its last answer.
 
 5. **Generic, not personal.** Product code never contains one owner's
    machines, names, addresses, prices or paths. Those live in that owner's
@@ -99,6 +101,8 @@ more general, and say why in one sentence.
 
 - Tests for the logic, including refused inputs; the real path tried end to
   end (QA), not just compiled.
+- Tests never reach the real world: a desktop notification, a phone push,
+  a network call or a device goes through a variable the test replaces.
 - CLI and GUI both done, `--format json` works, help text and examples.
 - Measured footprint where it runs all the time.
 - Docs and decision record updated; nothing personal in product code.
