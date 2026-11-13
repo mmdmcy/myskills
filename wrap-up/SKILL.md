@@ -1,6 +1,6 @@
 ---
 name: wrap-up
-description: Close a long Claude Code session without losing its context. Use when the user says wrap up, close this session, write things down, hand off, or wants to start a fresh conversation in this folder. Writes the handoff where the folder keeps its state, turns the user's corrections into rules, saves a project memory, lists what is unpushed or waiting on the user, and gives the one line that starts the next session.
+description: Close a long coding-agent session (Claude Code, Codex or any other) without losing its context. Use when the user says wrap up, close this session, write things down, hand off, or wants to start a fresh conversation in this folder. Writes the handoff where the folder keeps its state, turns the user's corrections into rules for every agent (never into one agent's private memory), lists what is unpushed or waiting on the user, and gives the one line that starts the next session.
 ---
 
 # Wrap up a session
@@ -57,13 +57,13 @@ skill is what the next session reads before doing that work on any machine. The 
 If the folder lives on two machines without syncing and its rules say to copy, copy the changed
 documents to the other machine (for example with the fleet tool's send command). Do not copy secrets.
 
-## 4. Save the memory
+## 4. Nothing in one agent's private memory
 
-In the auto memory directory for this project (the path is in the system prompt) write
-`handoff-YYYY-MM-DD-<topic>.md` with `type: project`: the compact version of step 1 (under 40
-lines), with absolute dates and `[[links]]` to related memories. Add it to `MEMORY.md`. Each
-correction the user made that is about how you work becomes a `type: feedback` memory with
-**Why** and **How to apply**, or extends an existing one.
+Everything from step 1 is in the shared files of step 3, where every agent and a human colleague
+read it. Never write it only to one agent's own memory folder (an "auto memory" directory, a
+tool's home folder such as `~/.claude` or `~/.codex`): nobody else sees it there. A correction
+about how you work is a rule in the folder's `AGENTS.md` or in the skill that owns that work
+(step 3), written for anyone.
 
 ## 5. Report
 
@@ -76,4 +76,4 @@ Reply with these headings and nothing else:
 - **Start the next session with:** one line the user can paste into a new session in this
   directory, of the form "Read AGENTS.md and <handoff file>, then continue with <next step>."
 
-Never say the session is wrapped up while a file in step 3 or 4 is unwritten.
+Never say the session is wrapped up while a file in step 3 is unwritten.
