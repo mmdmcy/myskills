@@ -99,6 +99,10 @@ more general, and say why in one sentence.
 
 ## Before shipping
 
+- Tests never read the real machine either: their own HOME, fakes for installed
+  programs and saved state.
+- A feature built fast gets one deliberate review of its failure paths before
+  it is called done.
 - Tests for the logic, including refused inputs; the real path tried end to
   end (QA), not just compiled.
 - Tests never reach the real world: a desktop notification, a phone push,
