@@ -25,7 +25,10 @@ more general, and say why in one sentence.
    timers and pages; nothing reaches into another module's internals. No
    two parts do the same job: before adding an agent, daemon, token or
    protocol, check whether an existing one already covers it, and extend
-   that instead.
+   that instead. A list that decides something (what is rebuildable junk,
+   which hosts are trusted) has one owner that the other parts ask; a miss
+   that comes back is fixed there, never by one more name in a caller's
+   own copy.
 
 4. **Lean and fast.** Few dependencies: write small, well-specified parts
    in-house; use the operating system's own tools when they are proven;
