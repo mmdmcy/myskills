@@ -84,8 +84,8 @@ more general, and say why in one sentence.
 - What problem, for whom, and what is the smallest thing that solves it?
 - Does something we already have do this, or almost, even from the other
   side? Extend it, or make its output say more; never build a second part
-  that compares the same things the other way round (2026-11-03: a
-  receiver's checklist rebuilt what the receipt already judged).
+  that compares the same things the other way round (such as a receiver's
+  checklist that rebuilds what the receipt already judged).
 - Write the answer down before building or briefing anyone: "extends X"
   or "searched for Y, nothing exists". The same before calling a finding
   new: check what the system already records.
@@ -99,6 +99,11 @@ more general, and say why in one sentence.
 
 ## Before shipping
 
+- Shipped means every device it was meant for runs it. Read the rollout's
+  result per device, not its summary, and check the feature on a device of
+  each system it is for. A gap you find or write down ("does not reach X
+  yet", in a comment or a fix text) goes into the owner's open list the same
+  day; a comment alone hides it.
 - Tests never read the real machine either: their own HOME, fakes for installed
   programs and saved state.
 - A feature built fast gets one deliberate review of its failure paths before
@@ -106,7 +111,9 @@ more general, and say why in one sentence.
 - Tests for the logic, including refused inputs; the real path tried end to
   end (QA), not just compiled.
 - Tests never reach the real world: a desktop notification, a phone push,
-  a network call or a device goes through a variable the test replaces.
+  a network call or a device goes through a variable the test replaces,
+  and a test's or a try-out's server (tmux, a database, a container) is
+  its own, on its own socket, never the one the person works in.
 - CLI and GUI both done, `--format json` works, help text and examples.
 - Measured footprint where it runs all the time.
 - Docs and decision record updated; nothing personal in product code.

@@ -10,13 +10,14 @@ Open-source Codex skills for small, durable workflows.
 - `decision-lenses`: reviews a medium- or high-impact decision through built-in SEO, marketing, engineering, and infrastructure perspectives, then returns one practical recommendation.
 - `lean-engineering`: an engineering philosophy for designing, building, reviewing and refactoring software: keep it simple, small parts that compose, few dependencies, generic not personal, secure by default, never destructive, measured, documented.
 - `wrap-up`: closes a long agent session without losing its context: the handoff where the folder keeps its state, corrections turned into rules, a project memory, what is unpushed or waiting, and the line that starts the next session.
+- `draft-message`: writes a mail or chat message in the user's name (Dutch or English) with the checks drafts fail on: channel, what the recipient can know, the sender's role, facts with their source, recomputed numbers, never sent. The sender's own voice is a file of their own that their agent rules name; its Outlook web steps are in `references/`, and `hooks/` has an optional Claude Code hook that loads it when a prompt asks for a message.
 
 ## Use
 
-Install or copy the skill folders into your Codex skills directory, then invoke them as `$notetaker`, `$repo-starter`, `$safe-yeet`, `$decision-lenses`, `$lean-engineering` or `$wrap-up`.
+Install or copy the skill folders into your Codex skills directory, then invoke them as `$notetaker`, `$repo-starter`, `$safe-yeet`, `$decision-lenses`, `$lean-engineering`, `$wrap-up` or `$draft-message`.
 
 ```bash
-cp -R notetaker repo-starter safe-yeet decision-lenses lean-engineering wrap-up "${CODEX_HOME:-$HOME/.codex}/skills/"
+cp -R notetaker repo-starter safe-yeet decision-lenses lean-engineering wrap-up draft-message "${CODEX_HOME:-$HOME/.codex}/skills/"
 ```
 
 ## License
