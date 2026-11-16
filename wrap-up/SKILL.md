@@ -1,6 +1,6 @@
 ---
 name: wrap-up
-description: Close a long coding-agent session (Claude Code, Codex or any other) without losing its context. Use when the user says wrap up, close this session, write things down, hand off, or wants to start a fresh conversation in this folder. Writes the handoff where the folder keeps its state, turns the user's corrections into rules for every agent (never into one agent's private memory), lists what is unpushed or waiting on the user, and gives the one line that starts the next session.
+description: Close a long coding-agent session (Claude Code, Codex or any other) without losing its context. Use when the user says wrap up, close this session, write things down, hand off, or wants to start a fresh conversation in this folder. Writes the handoff where the folder keeps its state, turns the user's corrections into rules for every agent (never into one agent's private memory), lists what is unpushed or waiting on the user, and makes sure the user's own plain words ("I'm home, do the handover") are enough to start the next one.
 ---
 
 # Wrap up a session
@@ -49,6 +49,12 @@ The corrections from step 1 become one-line rules in the folder's `AGENTS.md` (i
 section), so the next session does not repeat the mistake. A new rules file is always
 `AGENTS.md`, the name every coding agent reads. Keep the file's language and style.
 
+The user starts a new session with a plain sentence, never with a list of files to read
+(2026-11-16, after a wrap-up ended with such a line to paste). So each open item names its
+trigger the way the user will say it ("when the user says they are home with the laptop") and
+links the one page with its steps, in a file every new session reads by itself (the open list
+or the rules its agent loads at start).
+
 A correction about a kind of work that has its own skill (a message or mail: `draft-message`;
 code: `lean-engineering`) goes into that skill, in the same commit as the handoff, because the
 skill is what the next session reads before doing that work on any machine. The folder's
@@ -73,7 +79,8 @@ Reply with these headings and nothing else:
 - **Open** (with the next step each)
 - **Waiting on you**
 - **Where it is written** (file paths)
-- **Start the next session with:** one line the user can paste into a new session in this
-  directory, of the form "Read AGENTS.md and <handoff file>, then continue with <next step>."
+- **Next time, just say:** for each next step, the few words the user will say to start it
+  ("I'm home, do the handover"), checked: a new session reaches the right steps from those words
+  alone, through what it loads at start. Never a line of files to paste.
 
 Never say the session is wrapped up while a file in step 3 is unwritten.
