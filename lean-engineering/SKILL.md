@@ -102,6 +102,11 @@ more general, and say why in one sentence.
 
 ## Before shipping
 
+- A change that replaces something running (a runtime, a library, a program
+  a service runs) first lists what runs on the old version, then brings each
+  onto the new one: a service restarted and checked, anything else named with
+  a restart asked. An installer's exit 0 is not done: a program left on a
+  removed folder crashes later, at the next shutdown (2026-11-17).
 - Shipped means every device it was meant for runs it. Read the rollout's
   result per device, not its summary, and check the feature on a device of
   each system it is for. A gap you find or write down ("does not reach X
