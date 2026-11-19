@@ -98,6 +98,9 @@ more general, and say why in one sentence.
 - Is the request the best route to what the person wants? If a cheaper,
   safer or already-decided route exists, say so first, with a
   recommendation.
+- Do what was asked, at its size: a request to change wording keeps the
+  design, layout and colours; a redesign happens only when asked for in so
+  many words. A brief to another agent says so too.
 - Which module does it belong to, and can that module be switched off?
 - What does it cost to run (memory, CPU, processes, network, money)?
 - What is the attack surface, and who could misuse it?
