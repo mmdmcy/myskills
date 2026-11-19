@@ -37,6 +37,9 @@ more general, and say why in one sentence.
    latency) instead of guessing, and write the numbers down. Contact an
    outside service only when a local fact says something changed (a new
    commit, a new file), never on a short fixed timer; keep its last answer.
+   CI only where a failure costs someone (a product in production); a hobby
+   project gets none, and a rewrite turns its old CI off instead of porting
+   it.
 
 5. **Generic, not personal.** Product code never contains one owner's
    machines, names, addresses, prices or paths. Those live in that owner's
