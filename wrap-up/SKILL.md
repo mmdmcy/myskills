@@ -34,6 +34,8 @@ inferred stays marked as inferred.
   checks). Leave nothing unpushed only for want of the user's word.
 - Scripts or exports in your scratchpad that the next session needs: copy them into the
   project in the place its conventions give them.
+- Nothing of yours left running: every background shell, monitor and subagent you started has
+  ended or is stopped (a wait loop whose condition can no longer come true is killed).
 - Anything you left in a half state (a draft open in Outlook, a service you changed, a file
   renamed): name it.
 
