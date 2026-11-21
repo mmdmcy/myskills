@@ -124,6 +124,11 @@ more general, and say why in one sentence.
   it is called done.
 - Tests for the logic, including refused inputs; the real path tried end to
   end (QA), not just compiled.
+- A change that acts on another system (a scheduled task, a service, a
+  setting on a Windows PC or a Mac) is run there for real before its first
+  release, not only validated: the exact script, under a throwaway name,
+  its result read back from the system itself rather than the script's own
+  "ok", then removed. Fixes found that way ship together in one release.
 - Tests never reach the real world: a desktop notification, a phone push,
   a network call or a device goes through a variable the test replaces,
   and a test's or a try-out's server (tmux, a database, a container) is
