@@ -60,7 +60,13 @@ more general, and say why in one sentence.
    documented mechanism (systemd on Linux, launchd on macOS, Task Scheduler
    and OpenSSH Server on Windows, WSL's own settings). Keep Linux and
    Windows clearly apart: a command says which shell it runs in, and
-   PowerShell is passed encoded, never through nested quoting.
+   PowerShell is passed as plain text, on standard input or as a `.ps1`
+   run with `-File`, never through nested quoting and never encoded
+   (`-EncodedCommand`). An install goes through the platform's package
+   manager (winget) or a visible script that checks the download's hash,
+   never a hidden download-and-run. Encoding, nested execution and hidden
+   downloads are what antivirus looks for in attacks, and they hide the
+   script from whoever reads the command line.
 
 9. **Seamless developer experience.** No silent caps, truncation or
    timeouts that ignore what was asked; errors say what happened and the
