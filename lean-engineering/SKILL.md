@@ -50,7 +50,9 @@ more general, and say why in one sentence.
    uses them and never moved; no shared secret that unlocks everything;
    nothing listening publicly that does not have to; validate every input
    before it reaches a shell; never print secrets. Prefer one well-known,
-   audited channel (SSH, WireGuard, OIDC) over a home-made one.
+   audited channel (SSH, WireGuard, OIDC) over a home-made one. Privacy
+   hardening never turns off an update or security check: a version
+   lookup is not telemetry, and without it nobody hears of a fix.
 
 7. **Never destructive.** Changes add; replaced files are kept as
    `.bak-DATE`; removals become commented-out or archived. Show the plan
